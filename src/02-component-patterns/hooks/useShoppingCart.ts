@@ -1,8 +1,8 @@
-# Algoritmo
-de filtrado y borrado en Dictionary
+import { useState } from "react";
+import { Product, ProductInCart } from "../interfaces/interfaces";
 
 
-export const ShoppingPage = () => {
+export const useShoppingCart =()=>{
 
     const [shoppingCard, setShoppingCard] = useState<{ [key:string]:ProductInCart}>({})
 
@@ -12,7 +12,23 @@ export const ShoppingPage = () => {
 
         setShoppingCard( prev => {
 
-            //FORMA DE ELIMINAR UN ELEMENTO 
+            const prodoductInCard : ProductInCart = prev[product.id] || {...product,counter:0};
+
+            if( Math.max( prodoductInCard.counter + count , 0) > 0){
+                prodoductInCard.counter += count;
+                return {
+                    ...prev,
+                    [product.id]:prodoductInCard
+                }
+            }
+
+
+            const {  [product.id]:toDelte, ...rest} =prev;
+            return {...rest};
+
+
+
+           /* //FORMA DE ELIMINAR UN ELEMENTO 
             // useState<{ [key:string]:ProductInCart}>({})
             if(count === 0){
                 //Extraigo la propiedad del objeto como estba que MACHE CON ELID [] y mando el resto de props;
@@ -29,20 +45,15 @@ export const ShoppingPage = () => {
             return {
                 ...prev,
                 [product.id] : {...product,counter:count}    
-            }
+            }*/
             
         });
     }
-    return (
-        <div>
-            <h1>ShoppingPage</h1>
-            <hr/>
 
-            ////////////////////////////
 
-            Object.entries(shoppingCard).map( ([key,value])=>(
-                        <ProductCard key={key} product={value} className='bg-dark text-white colum-right'>
-                            <ProductCard.Image />
-                            <ProductCard.Button className='custom-buttons' />
-                        </ProductCard>
-                     ))               
+    return {
+        shoppingCard,
+        onProductCountChange
+    }
+}
+

@@ -9,3 +9,14 @@
     color: white;
     border-color: white;
 }
+.shopping-cart {
+    position:fixed;
+    right: 10px;
+    top: 0px;
+}
+
+.colum-right{
+    width: 80px;
+    height: 120px;
+    padding-bottom: 10px;
+}
