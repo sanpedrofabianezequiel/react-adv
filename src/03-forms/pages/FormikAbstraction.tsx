@@ -2,6 +2,11 @@ import React from 'react'
 import '../styles/styles.css';
 import {FormikErrors, useFormik,Form,Field,ErrorMessage,Formik} from 'formik';
 import * as YUP from 'yup';
+import {
+    MyTextInput,
+    MySelect,
+    MyCheckBox
+} from '../components';
 
 
 interface IFormValues {
@@ -50,40 +55,22 @@ export const FormikAbstraction = () => {
                 {
                     (formik)=>(
                         <Form  >
-                            <label htmlFor="firstName">First Name</label>
-                            <Field name="firstName" type="text" />
-                            <ErrorMessage name="firstName" component='span' />
-            
-                            <label htmlFor="lastName">Last Name</label>
-                            <Field  name="lastName" type="text"/>
-                            <ErrorMessage name="lastName" component='span' />
-            
-                            <label htmlFor="email">Email address</label>
-                            <Field  name="email"    type="text" />
-                            <ErrorMessage  name="email" component='span' />
+                            <MyTextInput label={'First Name'} name={'firstName'} placeholder='Ezequiel' />
+
+                            <MyTextInput label={'Last Name'} name={'lastName'} placeholder='San Pedro' />
+                            
+                            <MyTextInput label={'Email address'} name={'email'} placeholder='email@gmail.com' type='email' />
 
 
-
-                            <label htmlFor="jobType">Job type</label>
-                            <Field name="jobType" as="select">
+                            <MySelect name="jobType" label={'Job Type'} >
                                 <option value="">Something</option>
                                 <option value="developer">Developer</option>
                                 <option value="designer">Designer</option>
                                 <option value="it-senior">IT Senior</option>
                                 <option value="it-jr">IT Jr.</option>
-                            </Field>
-                            <ErrorMessage  name="jobType" component='span' />
+                            </MySelect>
 
-
-                            
-                            <label >Terms and conditions
-                                <Field  name="terms"    type="checkbox" />
-                            </label>
-                            <ErrorMessage  name="terms" component='span' />
-
-
-
-
+                            <MyCheckBox label={'Terms & Conditions'} name={'terms'} />
             
                             <button type="submit">Submit</button>
                         </Form>
