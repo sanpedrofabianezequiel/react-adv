@@ -1,0 +1,49 @@
+[
+    {
+        "type":"input",
+        "name":"firstName",
+        "placeholder":"Ezequiel",
+        "label":"First Name",
+        "value":"",
+        "validations":[
+            {
+                "type":"required"
+            },
+            {
+                "type":"minLenght",
+                "value":5
+            }
+        ]
+    },
+    {
+        "type":"input",
+        "name":"lastName",
+        "placeholder":"San Pedro",
+        "label":"Last Name",
+        "value":"",
+        "validations":[
+            {
+                "type":"required"
+            }
+        ]
+    },
+    {
+        "type":"select",
+        "name":"favoriteGame",
+        "label":"Favorite Game",
+        "value":"",
+        "options":[{
+            "id":1,
+            "label":"Super Smash"
+        },
+        {
+            "id":2,
+            "label":"Batman"
+        },
+        {
+            "id":3,
+            "label":"Residen evil"
+        }]
+    }
+
+]
